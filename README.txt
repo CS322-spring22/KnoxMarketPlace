@@ -1,4 +1,3 @@
 Team 3
-Drake Pham
 
-test2
+Starting Repo
