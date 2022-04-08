@@ -1,3 +1,4 @@
+import React from "react";
 import {GoogleLogout} from 'react-google-login';
 import './logs.css';
  
