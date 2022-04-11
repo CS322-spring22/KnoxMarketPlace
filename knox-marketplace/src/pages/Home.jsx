@@ -1,32 +1,43 @@
 import React from "react";
 import Categories from "../components/Categories";
 import '../App.css';
-import LoginButton from "../components/login";
-import LogoutButton from "../components/logout";
-import { useEffect } from 'react';
-import { gapi } from 'gapi-script';
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-const clientId = "961228782855-iluvtmr6tvcpkrg5a6idrutbj6gt5vdl.apps.googleusercontent.com";
 
 const Home = () => {
-    useEffect(() => {
-        function start(){
-            gapi.client.init({
-              clientId: clientId,
-              scope: ""
-            })
-        };
-    
-        gapi.load('client:auth2', start);
-      });
+
+    let navigate = useNavigate();
+
 
     return (
         <div className="App">
-            <LogoutButton />
-            <LoginButton />
             <Categories/>
+            <HomeSignUp onClick={() => {navigate("/loginPage")}}>Hello, Sign in or Register</HomeSignUp>
+
         </div>
-    );
+    )
 };
+
+const HomeSignUp = styled.button`
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    appearance: none;
+    background-color: #000000;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 60px;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+ `;
 
 export default Home;
