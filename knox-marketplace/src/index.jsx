@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// export { Login } from "./loginPage";
+// export { Register } from "./register";
 
 ReactDOM.render(
   <React.StrictMode>
