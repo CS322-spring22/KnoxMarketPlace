@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
-    height: 60px;
+    height: 80px;
     background-color: teal;
 `
 
@@ -37,11 +37,16 @@ export const Navbar = () => {
     return (
         <Container>
             <Wrapper>
-                <Left>Post Item</Left>
+                <Left>
+                    <PostItem>Post Item</PostItem>
+                </Left>
                 <Center>
                     <OurName>Knox Marketplace</OurName>
                 </Center>
-                <Right><HomeSignUp onClick={() => {navigate("/loginPage")}}>Sign in</HomeSignUp></Right>
+                <Right>
+                    <Cart>Cart</Cart>
+                    <HomeSignUp onClick={() => {navigate("/loginPage")}}>Sign in</HomeSignUp>
+                </Right>
             </Wrapper>
         </Container>
     )
@@ -49,6 +54,44 @@ export const Navbar = () => {
 
 const HomeSignUp = styled.button`
     right: 0px;
+    appearance: none;
+    background-color: #000000;
+    border: 2px solid #1A1A1A;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 40px;
+    outline: none;
+    padding: 6px 8px;
+    text-align: center;
+ `;
+
+ const PostItem = styled.button`
+    right: 0px;
+    appearance: none;
+    background-color: #000000;
+    border: 2px solid #1A1A1A;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 40px;
+    outline: none;
+    padding: 6px 8px;
+    text-align: center;
+ `;
+
+ const Cart = styled.button`
+    margin-right: 5px;
     appearance: none;
     background-color: #000000;
     border: 2px solid #1A1A1A;
