@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from 'react';
 import styled from "styled-components";
 import LoginButton from "../components/login";
 import { useEffect } from 'react';
 import { gapi } from 'gapi-script';
 import { useNavigate } from "react-router-dom";
-
+import { auth } from "../firebase";
 
 const clientId = "961228782855-iluvtmr6tvcpkrg5a6idrutbj6gt5vdl.apps.googleusercontent.com";
 
-
 const LoginPage = () => {
+
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
+
 
    let navigate = useNavigate();
 
@@ -25,6 +28,36 @@ const LoginPage = () => {
       gapi.load('client:auth2', start);
     });
 
+    const signIn = e => {
+      e.preventDefault();
+
+      //fire base
+      auth
+         .signInWithEmailAndPassword(email, password)
+         .then(auth => {
+            navigate('/Home')
+         })
+         .catch(error => alert(error.message))
+    }
+
+    const register = e =>{
+      e.preventDefault();
+      
+     //firebase
+     auth
+        .createUserWithEmailAndPassword(email,password)
+        .then((auth) => {
+           console.log(auth);
+           if(auth) {
+              navigate('/Home')
+           }
+        })
+        .catch(error => alert(error.message))
+
+   }
+
+
+    
    return (
          <Container>
             <Logo>
@@ -38,19 +71,30 @@ const LoginPage = () => {
 
                <InputContainer>
                   <p>Email</p>
-                  <input type="email" />
+                  <input type='email' value={email} onChange=
+                  {e => setEmail(e.target.value)} />
                </InputContainer> 
+
                <InputContainer>
                   <p>Password</p>
-                  <input type="password" />
+                  <input type='password' value={password} onChange=
+                  {e => setPassword(e.target.value)} />
                </InputContainer>
-               <LoginButtonTwo>Login</LoginButtonTwo>
+
+               <LoginButtonTwo type='submit' onClick={signIn}
+               >Login</LoginButtonTwo>
+
+               <LoginButtonTwo type='submit' onClick={register}
+               >Register Account</LoginButtonTwo>
+
+
                <LoginButton />
+            
                <InfoText>By signing up with "Knox MarketPlace", 
                you are agreeing to the <span>Conditions of Use</span> and <span>Privacy Notice</span>.
                </InfoText>
             </FormContainer>
-            <SignUpButton onClick={() => {navigate("/register")}}>Create Account for Knox MarketPlace</SignUpButton>
+            {/* <SignUpButton onClick={() => {navigate("/register")}}>Create Account for Knox MarketPlace</SignUpButton> */}
          </Container>
    );
 }

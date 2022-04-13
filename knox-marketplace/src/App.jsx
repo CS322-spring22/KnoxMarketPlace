@@ -1,11 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from 'react';
 import LoginPage from "./pages/loginPage"; 
 import Home from "./pages/Home";
 import styled from "styled-components";
 import Register from "./pages/register";
 import CategoryPage from "./pages/CategoryPage";
 import ItemPage from "./pages/ItemPage";
+
+
+
 
 const App = () => {
   
