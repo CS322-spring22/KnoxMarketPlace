@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
-import LoginButton from "../components/login";
+// import LoginButton from "../components/login";
 import { useEffect } from 'react';
-import { gapi } from 'gapi-script';
+// import { gapi } from 'gapi-script';
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
-const clientId = "961228782855-iluvtmr6tvcpkrg5a6idrutbj6gt5vdl.apps.googleusercontent.com";
+
+
+// const clientId = "961228782855-iluvtmr6tvcpkrg5a6idrutbj6gt5vdl.apps.googleusercontent.com";
 
 const LoginPage = () => {
 
@@ -14,20 +16,22 @@ const LoginPage = () => {
    const [password, setPassword] = useState('');
 
 
+   
    let navigate = useNavigate();
 
 
-   useEffect(() => {
-      function start(){
-          gapi.client.init({
-            clientId: clientId,
-            scope: ""
-          })
-      };
+   // useEffect(() => {
+   //    function start(){
+   //        gapi.client.init({
+   //          clientId: clientId,
+   //          scope: ""
+   //        })
+   //    };
   
-      gapi.load('client:auth2', start);
-    });
+   //    gapi.load('client:auth2', start);
+   //  });
 
+    //SIGN IN FUNCTION
     const signIn = e => {
       e.preventDefault();
 
@@ -40,6 +44,7 @@ const LoginPage = () => {
          .catch(error => alert(error.message))
     }
 
+    //REGISTER FUNCTION
     const register = e =>{
       e.preventDefault();
       
@@ -87,9 +92,7 @@ const LoginPage = () => {
                <LoginButtonTwo type='submit' onClick={register}
                >Register Account</LoginButtonTwo>
 
-
-               <LoginButton />
-            
+               {/* <LoginButton /> */}
                <InfoText>By signing up with "Knox MarketPlace", 
                you are agreeing to the <span>Conditions of Use</span> and <span>Privacy Notice</span>.
                </InfoText>

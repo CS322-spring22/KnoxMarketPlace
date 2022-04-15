@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useNavigate } from "react-router-dom";
+import { NavDropdown } from 'react-bootstrap';
+import { auth } from "../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+
 
 const Container = styled.div`
     height: 80px;
@@ -32,6 +36,18 @@ const Right = styled.div`
 `
 
 export const Navbar = () => {
+    const [user, setUser] = useState({});
+
+    onAuthStateChanged(auth, (currentUser) =>{
+    setUser(currentUser);
+    });
+
+    const logoutAcc = async (e) => {
+        e.preventDefault();
+  
+        await signOut(auth);
+      }
+
     let navigate = useNavigate();
 
     return (
@@ -45,7 +61,12 @@ export const Navbar = () => {
                 </Center>
                 <Right>
                     <Cart>Cart</Cart>
-                    <HomeSignUp onClick={() => {navigate("/loginPage")}}>Sign in</HomeSignUp>
+                 <HomeSignUp onClick={() => {navigate("/loginPage")}}>Sign In</HomeSignUp>
+                    <NavDropdown title= {user?.email}>
+                        <NavDropdown.Item>
+                        <HomeSignUp onClick={logoutAcc}>Sign Out</HomeSignUp>
+                        </NavDropdown.Item>
+                    </NavDropdown>
                 </Right>
             </Wrapper>
         </Container>
