@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 // import LoginButton from "../components/login";
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // import { gapi } from 'gapi-script';
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import { EmailAuthProvider } from 'firebase/auth';
 
 
 
@@ -14,8 +15,6 @@ const LoginPage = () => {
 
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
-
-
    
    let navigate = useNavigate();
 
@@ -32,32 +31,63 @@ const LoginPage = () => {
    //  });
 
     //SIGN IN FUNCTION
+   //  var knoxDomain = 'knox.edu';
+   //  var userDomain;
+
+   //  const validEmail = e => {
+   //     userDomain = auth.substring(auth.lastIndexOf("@") +1);
+   //  }
+
     const signIn = e => {
       e.preventDefault();
 
-      //fire base
+      // if(userDomain === knoxDomain){
+      //    auth
+      //    .signInWithEmailAndPassword(email, password)
+      //    .then(auth => {
+      //       navigate('/Home')
+      //    })
+      //    .catch(error => alert(error.message))
+      // } else {
+      //    console.log(userDomain);
+      // }
       auth
          .signInWithEmailAndPassword(email, password)
          .then(auth => {
             navigate('/Home')
          })
          .catch(error => alert(error.message))
+      //fire base
     }
 
     //REGISTER FUNCTION
     const register = e =>{
       e.preventDefault();
       
-     //firebase
-     auth
-        .createUserWithEmailAndPassword(email,password)
-        .then((auth) => {
-           console.log(auth);
-           if(auth) {
-              navigate('/Home')
-           }
-        })
-        .catch(error => alert(error.message))
+   //   //firebase
+   //   if(userDomain === knoxDomain){
+   //    auth
+   //    .createUserWithEmailAndPassword(email,password)
+   //    .then((auth) => {
+   //       console.log(auth);
+   //       if(auth) {
+   //          navigate('/Home')
+   //       }
+   //    })
+   //    .catch(error => alert(error.message))
+   //   } else {
+   //    console.log(userDomain);
+   //   }
+
+   auth
+      .createUserWithEmailAndPassword(email,password)
+      .then((auth) => {
+         console.log(auth);
+         if(auth) {
+            navigate('/Home')
+         }
+      })
+      .catch(error => alert(error.message))
 
    }
 
@@ -115,7 +145,6 @@ const LoginPage = () => {
 
  const Logo = styled.div`
    width: 120px;
-
    img {
       width: 100%;
    }
@@ -126,7 +155,6 @@ const LoginPage = () => {
    position: absolute;
    top: 0px;
    left: 0px;
-
    img {
       width: 100%;
    }
@@ -141,27 +169,22 @@ const LoginPage = () => {
    align-items: center;
    justify-content: center;
    padding: 15px;
-
    h3{
       font-size: 28px;
       font-weight: 400;
       line-height: 33px;
       align-self: flex-start;
-
       margin-bottom: 10px;
-
    }
  `;
 
  const InputContainer = styled.div`
    width: 100%;
    padding: 10px;
-
    p {
       font-size: 14px;
       font-weight: 600;
    }
-
    input {
       width: 95%;
       height: 33px;
@@ -169,13 +192,10 @@ const LoginPage = () => {
       border-radius: 5px;
       border: 1px solid lightgray;
       margin-top: 5px;
-
       &:hover {
          border: 1px solid purple;
       }
    }
-
-
  `;
 
  const LoginButtonTwo = styled.button`
@@ -186,7 +206,6 @@ const LoginPage = () => {
    outline: none;
    border-radius: 10px;
    margin-top: 30px;
-
  `;
 
  const InfoText = styled.p`
@@ -195,7 +214,6 @@ const LoginPage = () => {
    word-wrap: normal;
    word-break: normal;
    margin-top: 20px;
-
    span{
       color: #426bc0;
    }
@@ -206,7 +224,6 @@ const LoginPage = () => {
    height: 35px;
    font-size: 12px;
    margin-top: 20px;
-
    &:hover{
       background-color: #dfdfdf;
       border: 1px solid gray;

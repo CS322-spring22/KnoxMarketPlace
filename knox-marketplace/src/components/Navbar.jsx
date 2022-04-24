@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useNavigate } from "react-router-dom";
-import { NavDropdown } from 'react-bootstrap';
+import { useNavigate, Link } from "react-router-dom";
+import { Dropdown, NavDropdown } from 'react-bootstrap';
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -38,6 +38,8 @@ const Right = styled.div`
 export const Navbar = () => {
     const [user, setUser] = useState({});
 
+    
+
     onAuthStateChanged(auth, (currentUser) =>{
     setUser(currentUser);
     });
@@ -60,13 +62,10 @@ export const Navbar = () => {
                     <OurName>Knox Marketplace</OurName>
                 </Center>
                 <Right>
-                    <Cart>Cart</Cart>
-                 <HomeSignUp onClick={() => {navigate("/loginPage")}}>Sign In</HomeSignUp>
-                    <NavDropdown title= {user?.email}>
-                        <NavDropdown.Item>
-                        <HomeSignUp onClick={logoutAcc}>Sign Out</HomeSignUp>
-                        </NavDropdown.Item>
-                    </NavDropdown>
+
+                <HomeSignUp onClick={() => {navigate("/loginPage")}}>Hello, {user ? user.email : "Guest"} </HomeSignUp>
+                        <HomeSignUp onClick={logoutAcc}>{user ? "Sign Out" : "Sign In"}</HomeSignUp>
+                <Cart>Cart</Cart>
                 </Right>
             </Wrapper>
         </Container>
