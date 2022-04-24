@@ -2,7 +2,7 @@ import React from 'react'
 import '../index.css';
 import {SidebarData} from './SidebarData'
 import styled from 'styled-components'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 
 export const Sidebar = () => {
@@ -11,7 +11,7 @@ export const Sidebar = () => {
   return (
     <div className='Sidebar'>
         <Container>
-            <LogoButton onClick={() => {navigate("/Home")}}><img src="./knox-logo.png" alt="" /></LogoButton>
+            <LogoButton onClick={() => {navigate("/")}}><img src="./knox-logo.png" alt="" /></LogoButton>
         </Container>
 
         <SearchContainer>
@@ -41,9 +41,20 @@ export const Sidebar = () => {
             </ul>
         </Container>
 
-        <AboutUs>
-            <h2>About Us</h2>
+        {/* <AboutUs>
+            <Link to="/about">
+                <h2>
+                    About Us
+                </h2>
+            </Link>
+                
+        </AboutUs> */}
+        <AboutUs onClick={() => {navigate("/about")}}> 
+            <h2>
+                About Us
+            </h2>
         </AboutUs>
+
     </div>
   )
 }
@@ -95,6 +106,7 @@ const AboutUs = styled.div`
     bottom: 0;
     position: absolute;
     padding: 2px;
+    cursor: pointer;
 `
 
 

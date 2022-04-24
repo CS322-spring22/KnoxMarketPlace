@@ -54,7 +54,7 @@ export const Navbar = () => {
         <Container>
             <Wrapper>
                 <Left>
-                    <PostItem>Post Item</PostItem>
+                    <PostItem onClick={() => {navigate("/post")}}>Post Item</PostItem>
                 </Left>
                 <Center>
                     <OurName>Knox Marketplace</OurName>

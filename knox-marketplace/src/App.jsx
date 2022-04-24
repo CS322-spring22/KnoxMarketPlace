@@ -5,9 +5,8 @@ import styled from "styled-components";
 import Register from "./pages/register";
 import CategoryPage from "./pages/CategoryPage";
 import ItemPage from "./pages/ItemPage";
-
-
-
+import AboutPage from "./pages/AboutPage"
+import Post from "./pages/PostPage"
 
 const App = () => {
   
@@ -21,6 +20,8 @@ const App = () => {
           <Route path= "/register" element={<Register/>} />
           <Route path= "/Category" element={<CategoryPage/>} />
           <Route path= "/Item" element={<ItemPage/>} />
+          <Route path= "/about" element={<AboutPage/>} />
+          <Route path= "/post" element={<Post/>} />
         </Routes>
       </Container>
     </Router>
