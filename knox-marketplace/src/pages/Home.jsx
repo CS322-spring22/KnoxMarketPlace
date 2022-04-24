@@ -6,13 +6,14 @@ import Sidebar from "../components/Sidebar";
 import '../App.css';
 import '../index.css';
 import styled from 'styled-components'
+import ItemPage from "./ItemPage";
 
 const Container = styled.div`
     flex: 1;
 `
 
 const Home = () => {
-
+    
     return (
         <div className="main">
                 <Sidebar/>
@@ -23,6 +24,12 @@ const Home = () => {
                 </Container>
         </div>
     )
+
+    /*
+   return (
+       <ItemPage/>
+   )
+   */
 };
 
 export default Home;
