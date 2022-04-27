@@ -26,7 +26,7 @@ code {
   margin: 0;
   height: 100%;
   width: 250px;
-  background-color: aqua;
+  background-color: #F7DC6F;
   overflow: auto;
   position: relative;
 }
@@ -51,11 +51,11 @@ code {
 
 .SidebarList .row:hover {
   cursor: pointer;
-  background-color: #00e4e5;
+  background-color: #D7DBDD;
 }
 
 .SidebarList #active {
-  background-color: #00e4e5;
+  background-color: #D7DBDD;
 }
 
 .row #icon {

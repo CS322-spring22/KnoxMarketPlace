@@ -9,7 +9,7 @@ const Info = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.1);
     opacity: 0;
     z-index: 2;
     display: flex;
@@ -27,7 +27,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f5fbfd;
+    background-color: #FEF9E7;
     position: relative;
 
     &:hover ${Info} {
