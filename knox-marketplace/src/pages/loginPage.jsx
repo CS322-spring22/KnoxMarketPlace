@@ -96,7 +96,7 @@ const LoginPage = () => {
    return (
          <Container>
             <Logo>
-               <img src="./knox-logo.png" alt="" />
+               <img src="./logotest.jpg" alt="" />
             </Logo>
 
             <LogoButton onClick={() => {navigate("/Home")}}><img src="./logo192.png" alt="" /></LogoButton>

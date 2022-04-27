@@ -11,7 +11,7 @@ export const Sidebar = () => {
   return (
     <div className='Sidebar'>
         <Container>
-            <LogoButton onClick={() => {navigate("/")}}><img src="./knox-logo.png" alt="" /></LogoButton>
+            <LogoButton onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
         </Container>
 
         <SearchContainer>
