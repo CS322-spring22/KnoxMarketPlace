@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useNavigate, Link } from "react-router-dom";
-import { Dropdown, NavDropdown } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import {firebase} from '../firebase';
+
 
 
 const Container = styled.div`
@@ -38,17 +39,42 @@ const Right = styled.div`
 export const Navbar = () => {
     const [user, setUser] = useState({});
 
-    
+    const SignInWithFirebase = e => {
+        // e.preventDefault();
+  
+        var google_provider = new firebase.auth.GoogleAuthProvider();
+        google_provider.setCustomParameters({
+           hd: "knox.edu"
+         });
+  
+        firebase.auth().signInWithPopup(google_provider)
+        .then((re)=>{
+           console.log(re);
+        })
+        .catch((err) => {
+           console.log(err);
+        })
+     }
+
+     const logoutAcc = async (e) => {
+        // e.preventDefault();
+  
+        await signOut(auth);
+      }
+
+      const userSignIn = e =>{
+        if(user == null){
+            SignInWithFirebase();
+        } else {
+            logoutAcc();
+        }
+
+      }
 
     onAuthStateChanged(auth, (currentUser) =>{
     setUser(currentUser);
     });
 
-    const logoutAcc = async (e) => {
-        e.preventDefault();
-  
-        await signOut(auth);
-      }
 
     let navigate = useNavigate();
 
@@ -63,8 +89,8 @@ export const Navbar = () => {
                 </Center>
                 <Right>
 
-                <HomeSignUp onClick={() => {navigate("/loginPage")}}>Hello, {user ? user.email : "Guest"} </HomeSignUp>
-                        <HomeSignUp onClick={logoutAcc}>{user ? "Sign Out" : "Sign In"}</HomeSignUp>
+                <HomeSignUp>Hello, {user ? user.email : "Guest"} </HomeSignUp>
+                        <HomeSignUp onClick={userSignIn}>{user ? "Sign Out" : "Sign In"}</HomeSignUp>
                 <Cart>Cart</Cart>
                 </Right>
             </Wrapper>
