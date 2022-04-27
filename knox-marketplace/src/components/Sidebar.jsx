@@ -49,7 +49,7 @@ export const Sidebar = () => {
             </Link>
                 
         </AboutUs> */}
-        <AboutUs onClick={() => {navigate("/about")}}> 
+        <AboutUs onClick={() => {navigate("/AboutUs")}}> 
             <h2>
                 About Us
             </h2>
