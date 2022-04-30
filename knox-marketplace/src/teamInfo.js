@@ -1,8 +1,8 @@
 export const teamMember = [
     {
       name: "Drake Pham",
-      img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      description: "Drake's description",
+      img: "./Drake.jpg",
+      description: "A dumb coder",
     },
     {
       name: "Hector Salgado",

@@ -100,7 +100,7 @@ import '../index.css';
 import styled from 'styled-components'
 import UploadImg from "../components/UploadImg";
 import BasicInfo from "../components/basicInfo";
-import Info from "../components/Info";
+
 
 const Container = styled.div`
     flex: 1;
@@ -113,14 +113,11 @@ const Left = styled.div`
     flex: 1;
 `
 const Body1 = styled.div`
-    height: 500px;
-    width: 850px;
+    padding: 10px 50px;
+    height: 1000px;
+    width: 1000px;
     background-color: #FEF9E7;
-`
-const Body2 = styled.div`
-    height: 500px;
-    width: 850px;
-    background-color: #FEF9E7;
+    margin: auto;
 `
 const Wrapper = styled.div`
     padding: 20px 20px;
@@ -138,12 +135,11 @@ const PostPage = () => {
             <UploadImg/>
 
             <Container><Wrapper>
-                {/* <Left> */}
+
                     <Body1>
                     <BasicInfo/>
                     </Body1>
-                {/* </Left> */}
-                <Body2><Info/></Body2>
+
             </Wrapper></Container>
             
         </div>
