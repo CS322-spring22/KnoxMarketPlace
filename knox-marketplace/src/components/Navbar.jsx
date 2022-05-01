@@ -7,6 +7,7 @@ import {firebase} from '../firebase';
 
 
 
+
 const Container = styled.div`
     height: 80px;
     background-color: teal;
@@ -38,6 +39,7 @@ const Right = styled.div`
 
 export const Navbar = () => {
     const [user, setUser] = useState({});
+   
 
     const SignInWithFirebase = e => {
         // e.preventDefault();
@@ -91,7 +93,6 @@ export const Navbar = () => {
 
                 <HomeSignUp>Hello, {user ? user.email : "Guest"} </HomeSignUp>
                         <HomeSignUp onClick={userSignIn}>{user ? "Sign Out" : "Sign In"}</HomeSignUp>
-                <Cart>Cart</Cart>
                 </Right>
             </Wrapper>
         </Container>

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SearchIcon from '@mui/icons-material/Search';
+import Navbar from './Navbar';
 
 const Info = styled.div`
     width: 100%;
@@ -55,9 +56,16 @@ const Icon = styled.div`
         transform: scale(1.1);
     }
 `
-
 const ItemSingle = ({item}) => {
+
+    const[cart, setCart] = useState([]);
+
+    const addToCart = (product) => {
+        setCart([...cart, product]);
+    }
+    
   return (
+    
     <Container>
         <Image src = {item.img}/>
         <Info>
@@ -65,11 +73,11 @@ const ItemSingle = ({item}) => {
                 <SearchIcon/>
             </Icon>
             <Icon>
-                <FavoriteBorderOutlinedIcon/>
+                <FavoriteBorderOutlinedIcon onClick={() => addToCart(item)}/>
             </Icon>
         </Info>
     </Container>
   )
 }
 
-export default ItemSingle
+export default  ItemSingle;
