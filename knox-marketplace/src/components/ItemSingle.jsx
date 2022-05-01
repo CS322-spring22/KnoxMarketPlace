@@ -38,7 +38,10 @@ const Container = styled.div`
 const Image = styled.img`
     height: 75%;
 `
-
+const Center = styled.div`
+    flex: 1;
+    text-align: center;
+`
 const Icon = styled.div`
     width: 40px;
     height: 40px;
@@ -58,17 +61,51 @@ const Icon = styled.div`
 
 const ItemSingle = ({item}) => {
   return (
-    <Container>
+    // <Container>
+    //     <Image src = {item.img}/>
+        
+    //     <Info>
+    //         <Icon>
+    //             <SearchIcon/>
+    //         </Icon> 
+    //         <Icon>
+    //             <FavoriteBorderOutlinedIcon/>
+    //         </Icon>
+    //     </Info>
+        
+    //     <Container>
+    //         <h4>{item.title}</h4>
+    //         <h1>{item.cost}</h1>
+    //     </Container>
+    // </Container>
+    
+    
+    // <Container>
+    //     <h3>{item.title}</h3>
+    //     <h1>{item.cost}</h1>
+    // </Container>
+    <div> 
+        <Container>
         <Image src = {item.img}/>
+        
         <Info>
             <Icon>
                 <SearchIcon/>
-            </Icon>
+            </Icon> 
             <Icon>
                 <FavoriteBorderOutlinedIcon/>
             </Icon>
         </Info>
+
     </Container>
+    <Center>
+        <h4>{item.title}</h4>
+        <h4>${item.cost}</h4>
+        <h1>_____</h1>
+    </Center>
+    
+
+    </div>
   )
 }
 
