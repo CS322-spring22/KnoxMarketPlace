@@ -128,10 +128,8 @@ const PostPage = () => {
     
     return (
         <div className="Post">
-            
-            {/* <Container> */}
             <Navbar/>
-            {/* </Container>  */}
+
             <UploadImg/>
 
             <Container><Wrapper>

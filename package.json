@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "axios": "^0.26.1",
-    "bootstrap": "^5.1.3"
+    "bootstrap": "^5.1.3",
+    "firebase": "^9.7.0"
   },
   "devDependencies": {
     "react-images-upload": "^1.2.8"
