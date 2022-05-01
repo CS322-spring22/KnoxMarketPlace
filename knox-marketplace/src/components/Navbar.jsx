@@ -10,11 +10,11 @@ import {firebase} from '../firebase';
 
 const Container = styled.div`
     height: 80px;
-    background-color: teal;
+    background-color: #F7DC6F;
 `
 
 const Wrapper = styled.div`
-    padding: 10px 20px;
+    padding: 20px 20px;
     display: flex;
     justify-content: space-between;
 `
@@ -102,11 +102,11 @@ export const Navbar = () => {
 const HomeSignUp = styled.button`
     right: 0px;
     appearance: none;
-    background-color: #000000;
-    border: 2px solid #1A1A1A;
+    background-color: #CACFD2;
+    border: 2px solid #CACFD2;
     border-radius: 5px;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: black;
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
@@ -121,11 +121,11 @@ const HomeSignUp = styled.button`
  const PostItem = styled.button`
     right: 0px;
     appearance: none;
-    background-color: #000000;
-    border: 2px solid #1A1A1A;
+    background-color: #CACFD2;
+    border: 2px solid #CACFD2;
     border-radius: 5px;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: black;
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
@@ -140,11 +140,11 @@ const HomeSignUp = styled.button`
  const Cart = styled.button`
     margin-right: 5px;
     appearance: none;
-    background-color: #000000;
-    border: 2px solid #1A1A1A;
+    background-color: #CACFD2;
+    border: 2px solid #CACFD2;
     border-radius: 5px;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: black;
     cursor: pointer;
     display: inline-block;
     font-size: 16px;

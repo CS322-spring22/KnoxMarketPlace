@@ -26,11 +26,6 @@ const Home = () => {
         </div>
     )
 
-    /*
-   return (
-       <ItemPage/>
-   )
-   */
 };
 
 export default Home;

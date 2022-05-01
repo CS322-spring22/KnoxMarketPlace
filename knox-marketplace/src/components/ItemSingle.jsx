@@ -10,7 +10,7 @@ const Info = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.1);
     opacity: 0;
     z-index: 2;
     display: flex;
@@ -28,7 +28,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f5fbfd;
+    background-color: #FEF9E7;
     position: relative;
 
     &:hover ${Info} {
@@ -39,7 +39,10 @@ const Container = styled.div`
 const Image = styled.img`
     height: 75%;
 `
-
+const Center = styled.div`
+    flex: 1;
+    text-align: center;
+`
 const Icon = styled.div`
     width: 40px;
     height: 40px;
@@ -65,18 +68,51 @@ const ItemSingle = ({item}) => {
     }
     
   return (
+    // <Container>
+    //     <Image src = {item.img}/>
+        
+    //     <Info>
+    //         <Icon>
+    //             <SearchIcon/>
+    //         </Icon> 
+    //         <Icon>
+    //             <FavoriteBorderOutlinedIcon/>
+    //         </Icon>
+    //     </Info>
+        
+    //     <Container>
+    //         <h4>{item.title}</h4>
+    //         <h1>{item.cost}</h1>
+    //     </Container>
+    // </Container>
     
-    <Container>
+    
+    // <Container>
+    //     <h3>{item.title}</h3>
+    //     <h1>{item.cost}</h1>
+    // </Container>
+    <div> 
+        <Container>
         <Image src = {item.img}/>
+        
         <Info>
             <Icon>
                 <SearchIcon/>
-            </Icon>
+            </Icon> 
             <Icon>
                 <FavoriteBorderOutlinedIcon onClick={() => addToCart(item)}/>
             </Icon>
         </Info>
+
     </Container>
+    <Center>
+        <h4>{item.title}</h4>
+        <h4>${item.cost}</h4>
+        <h1>_____</h1>
+    </Center>
+    
+
+    </div>
   )
 }
 
