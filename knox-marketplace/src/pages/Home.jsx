@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Categories from "../components/Categories";
 import Items from "../components/Items";
 import Navbar from "../components/Navbar";
@@ -13,6 +13,7 @@ const Container = styled.div`
 `
 
 const Home = () => {
+
     
     return (
         <div className="main">
