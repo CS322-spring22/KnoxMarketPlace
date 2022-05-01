@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 
 const Image = styled.img`
   width: 50%;
-  height: 30vh;
+  height: 40vh;
   object-fit: cover;
 `
 

@@ -2,11 +2,11 @@
 import firebase from "firebase/compat/app";
 import  "firebase/compat/auth"
 import "firebase/compat/firestore"
-
+import { getStorage } from "firebase/storage";
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAKigeU6nrudM6-Tc4QQjbdsY_IxBcDHlM",
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
     authDomain: "knox-marketplace.firebaseapp.com",
     projectId: "knox-marketplace",
     storageBucket: "knox-marketplace.appspot.com",
@@ -18,8 +18,9 @@ const firebaseConfig = {
 
   const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-  const db = firebaseApp.firestore();
   const auth = firebase.auth();
 
   
-  export { db, auth, firebase};
+  export { auth, firebase};
+  export const db = firebaseApp.firestore();
+  export const storage = getStorage(firebaseApp);

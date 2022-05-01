@@ -77,7 +77,7 @@ class App extends Component {
       return (
         <div>
             <h1>
-              Upload your Item's image:
+              Upload Your Item's Image:
             </h1>
             <div>
                 <input type="file" onChange={this.onFileChange} />

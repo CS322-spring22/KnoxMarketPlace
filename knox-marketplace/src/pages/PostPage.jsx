@@ -137,7 +137,7 @@ const PostPage = () => {
             <Container><Wrapper>
 
                     <Body1>
-                    <BasicInfo/>
+                        <BasicInfo/>
                     </Body1>
 
             </Wrapper></Container>

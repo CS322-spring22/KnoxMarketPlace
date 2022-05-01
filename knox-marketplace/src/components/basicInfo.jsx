@@ -79,6 +79,11 @@
 import React, {useState} from 'react';
 // import {useHistory} from "react-router"
 import '../App.css';
+import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from '../firebase';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
 
 export default function Form(){
 
@@ -102,13 +107,49 @@ export default function Form(){
 
     const [count, setCount] = useState(1)
 
+    const [data, setData] = useState({});
+
     const updateForm = (e) => {
+        /*
         setForm ({
             ...form,
             [e.target.name]: e.target.value,
         })
+        */
         // console.log(e.target)
         // console.log(form)
+
+        const id = e.target.id;
+        const value = e.target.value;
+
+        setData({...data, [id]: value});
+    }
+
+    const handleAdd = async(e) => {
+        e.preventDefault();
+
+        try {
+            const auth = getAuth();
+            const user = auth.currentUser;
+            /*
+            await setDoc(doc(db, "users", user.uid), {
+                ...data,
+                timeStamp: serverTimestamp(),
+            });
+            */
+
+            const docRef = await addDoc(collection(db, "items"), {
+                details: 
+                {
+                    uid: user.uid,
+                    ...data,
+                    timeStamp: serverTimestamp(),
+                }
+            });
+              
+        } catch (err) {
+            console.log(err);
+        }
     }
 
 
@@ -157,27 +198,28 @@ export default function Form(){
 
             {/* <h5 className = "form-step"> steps: {count} of 4 </h5> */}
 
-            <form>
+            <form onSubmit = {handleAdd}>
 
                 
                 <div className = "field1">
                 {/* <label> customer info </label> */}
-                <h1>YOUR ITEM's</h1>
-                <h3>Name:</h3>
+                <h1>YOUR ITEM</h1>
+                <h3>Title:</h3>
                 <input 
                     // type ="text" 
+                    id = "title"
                     className = "form-input"
                     name ="title" 
                     placeholder="📛"
                     onChange ={updateForm} 
                     // value = {form.name}
                 />
-
-                <h3>Cost:</h3>
+                <h3>Price:</h3>
                 <input 
                     // type ="tel" 
+                    id = "price"
                     className = "form-input"
-                    name ="cost" 
+                    name ="price" 
                     placeholder="💸"
                     onChange ={updateForm} 
                     // value = {form.phone}
@@ -185,15 +227,27 @@ export default function Form(){
                 <h3>Category:</h3>
                 <input 
                     // type ="email" 
+                    id = "category"
                     className = "form-input"
                     name ="Category" 
                     placeholder="🔠"
                     onChange ={updateForm} 
                     // value = {form.email}
                 />
+                <h3>Image:</h3>
+                <input 
+                    // type ="email" 
+                    id = "image"
+                    className = "form-input"
+                    name ="image" 
+                    placeholder="Image"
+                    onChange ={updateForm} 
+                    // value = {form.email}
+                />
                 <h3>Description:</h3>
                 <textarea 
                     // type ="text" 
+                    id = "description"
                     className = "form-input"
                     name ="Description" 
                     placeholder="💭"
