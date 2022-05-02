@@ -25,9 +25,13 @@ const Image = styled.img`
 
 const InfoContainer = styled.div`
   flex: 1;
+
+  width: 20%;
 `
 
 const ChatContainer = styled.div`
+
+width: 20%;
   flex: 1;
 `
 
@@ -65,13 +69,20 @@ const Button = styled.button`
     background-color: #f8f4f4;
   }
 `
-
+const Body = styled.div`
+    padding: 10px 50px;
+    height: 700px;
+    width: 500px;
+    background-color: #FEF9E7;
+    margin: auto;
+`
 
 const ItemPage = () => {
   return (
+    
     <Page>
         <Sidebar/>
-
+        
         <Container>
             <Navbar/>
 
@@ -91,6 +102,11 @@ const ItemPage = () => {
                 <ChatContainer>
                     
                 </ChatContainer>
+            </Wrapper>
+            <Wrapper>
+              <ChatContainer>
+                
+              </ChatContainer>
             </Wrapper>
         </Container>
     </Page>
