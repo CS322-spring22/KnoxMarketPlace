@@ -11,12 +11,12 @@ const Card = styled.div`
 
 const Image = styled.img`
     width: 100%;
-    height: 60%;
+    height: 70%;
     object-fit: cover;
 `;
 
 const Name = styled.h2`
-    margin: 10px;
+
 `;
 
 const Description = styled.p`

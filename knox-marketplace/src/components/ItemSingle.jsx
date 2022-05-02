@@ -36,13 +36,26 @@ const Container = styled.div`
     }
 `
 
+const Card = styled.div`
+    flex: 1;
+    margin: 5px;
+    height: 400px;
+    align-items: center;
+`
+
 const Image = styled.img`
     height: 75%;
 `
-const Center = styled.div`
-    flex: 1;
+
+const ItemDetails = styled.div`
+    text-align: center;
+    height: 100px;
+`
+
+const Line = styled.h1`
     text-align: center;
 `
+
 const Icon = styled.div`
     width: 40px;
     height: 40px;
@@ -59,6 +72,7 @@ const Icon = styled.div`
         transform: scale(1.1);
     }
 `
+
 const ItemSingle = ({item}) => {
 
     const[cart, setCart] = useState([]);
@@ -91,28 +105,27 @@ const ItemSingle = ({item}) => {
     //     <h3>{item.title}</h3>
     //     <h1>{item.cost}</h1>
     // </Container>
-    <div> 
+    <Card> 
         <Container>
-        <Image src = {item.img}/>
-        
-        <Info>
-            <Icon>
-                <SearchIcon/>
-            </Icon> 
-            <Icon>
-                <FavoriteBorderOutlinedIcon onClick={() => addToCart(item)}/>
-            </Icon>
-        </Info>
+            <Image src = {item.image}/>
+            
+            <Info>
+                <Icon>
+                    <SearchIcon/>
+                </Icon> 
+                <Icon>
+                    <FavoriteBorderOutlinedIcon onClick={() => addToCart(item)}/>
+                </Icon>
+            </Info>
+        </Container>
 
-    </Container>
-    <Center>
-        <h4>{item.title}</h4>
-        <h4>${item.cost}</h4>
-        <h1>_____</h1>
-    </Center>
-    
+        <ItemDetails>
+            <h4>{item.title}</h4>
+            <h4>${item.price}</h4>
+            <Line>_____</Line>
+        </ItemDetails>
 
-    </div>
+    </Card>
   )
 }
 

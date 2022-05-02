@@ -6,7 +6,7 @@ export const teamMember = [
     },
     {
       name: "Hector Salgado",
-      img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      img: "./Hector.jpg",
       description: "Hector's description",
     },
     {
