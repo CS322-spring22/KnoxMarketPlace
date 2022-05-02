@@ -9,6 +9,9 @@ import {firebase} from '../firebase';
 
 
 const Container = styled.div`
+    position: sticky;
+    top: 0;
+    z-index: 100;
     height: 80px;
     background-color: #F7DC6F;
 `
@@ -40,7 +43,6 @@ const Right = styled.div`
 export const Navbar = () => {
     const [user, setUser] = useState({});
    
-
     const SignInWithFirebase = e => {
         // e.preventDefault();
   
