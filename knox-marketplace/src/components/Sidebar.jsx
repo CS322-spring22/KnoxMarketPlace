@@ -5,11 +5,22 @@ import styled from 'styled-components'
 import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 
+
+const SidebarEdit = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #F7DC6F;
+`
+
 export const Sidebar = () => {
     let navigate = useNavigate();
 
   return (
-    <div className='Sidebar'>
+    <SidebarEdit>
         <Container>
             <LogoButton onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
         </Container>
@@ -55,9 +66,10 @@ export const Sidebar = () => {
             </h2>
         </AboutUs>
 
-    </div>
+    </SidebarEdit>
   )
 }
+
 
 const LogoButton = styled.div`
    width: 180px;

@@ -22,14 +22,15 @@ code {
   height: 100vh;
 }
 
-.Sidebar {
+/* .SidebarList {
   margin: 0;
   height: 100%;
   width: 250px;
   background-color: #F7DC6F;
-  overflow: auto;
-  position: relative;
-}
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5%;
+} */
 
 .SidebarList {
   height: auto;
