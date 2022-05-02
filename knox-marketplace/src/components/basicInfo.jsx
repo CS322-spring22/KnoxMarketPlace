@@ -83,7 +83,7 @@ import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/fires
 import { db } from '../firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-
+import { useNavigate } from "react-router-dom";
 
 export default function Form(){
 
@@ -150,6 +150,8 @@ export default function Form(){
         } catch (err) {
             console.log(err);
         }
+
+        navigate("/");
     }
 
 
@@ -191,7 +193,7 @@ export default function Form(){
     //     history.push("/portfolio")     //onSubmit redirect to a new page
     // }
 
-
+    let navigate = useNavigate();
 
     return (
         <div className = "form-box">
