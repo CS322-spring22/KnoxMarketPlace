@@ -9,10 +9,9 @@ import {firebase} from '../firebase';
 
 
 const Container = styled.div`
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 100;
-    width: 100%;
     height: 80px;
     background-color: #F7DC6F;
 `
@@ -25,13 +24,6 @@ const Wrapper = styled.div`
 
 const Left = styled.div`
     flex: 1;
-    display: flex;
-
-    .itembutton{
-        margin-left: 30px;
-        width: 100px;
-        height: 50px;
-    }
 
 `
 
@@ -99,14 +91,9 @@ export const Navbar = () => {
         <Container>
             <Wrapper>
             <Left>
-                <LogoButton className="logobutton" onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
-                <HomeButton className="itembutton" onClick={() => {navigate("/")}}>Home</HomeButton>
-                <ItemPosting className="itembutton" onClick={() => {navigate("/post")}}>Post Item</ItemPosting>
+                <HomeButton onClick={() => {navigate("/")}}>Home</HomeButton>
+                <PostItem onClick={() => {navigate("/post")}}>Post Item</PostItem>
             </Left> 
-
-            {/* <Posting>
-            <PostItem onClick={() => {navigate("/post")}}>Post Item</PostItem>
-             </Posting> */}
 
                 <Center>
                     <OurName>Knox Marketplace</OurName>
@@ -144,17 +131,7 @@ export const Navbar = () => {
     }
  `;
 
- const LogoButton = styled.div`
-   width: 180px;
-   margin: 10px;
-   cursor: pointer;
-   margin-left: 15px;
-
-   img {
-      width: 100%;
-   }
-`
-const ItemPosting = styled.button`
+const PostItem = styled.button`
 
     left: 0px;
     appearance: none;

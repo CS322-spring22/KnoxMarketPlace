@@ -7,14 +7,13 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 const SidebarEdit = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 100;
   margin: 0;
   height: 100%;
   width: 250px;
   background-color: #F7DC6F;
-  padding-top: 215px;
 `
 
 export const Sidebar = () => {
@@ -22,6 +21,9 @@ export const Sidebar = () => {
 
   return (
     <SidebarEdit>
+         <Container>
+            <LogoButton onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
+        </Container>
 
         <SearchContainer>
             <SearchIcon/>
@@ -67,6 +69,14 @@ export const Sidebar = () => {
   )
 }
 
+const LogoButton = styled.div`
+   width: 180px;
+   margin: 20px;
+   cursor: pointer;
+   img {
+      width: 100%;
+   }
+`
 
 const Container = styled.div`
     display: flex;
