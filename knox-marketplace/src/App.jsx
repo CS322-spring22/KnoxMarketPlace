@@ -13,10 +13,10 @@ const App = () => {
       <Container>
         <Routes>
           <Route path= "" element={<Home/>} />
-          <Route path= "/Home" element={<Home/>} />
-          <Route path= "/Category" element={<CategoryPage/>} />
-          <Route path= "/Item" element={<ItemPage/>} />
-          <Route path= "/AboutUs" element={<AboutPage/>} />
+          <Route path= "/home" element={<Home/>} />
+          <Route path= "/category" element={<CategoryPage/>} />
+          <Route path= "/item" element={<ItemPage/>} />
+          <Route path= "/about" element={<AboutPage/>} />
           <Route path= "/post" element={<Post/>} />
         </Routes>
       </Container>

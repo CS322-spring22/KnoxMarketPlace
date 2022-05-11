@@ -60,7 +60,7 @@ export const Sidebar = () => {
             </Link>
                 
         </AboutUs> */}
-        <AboutUs onClick={() => {navigate("/AboutUs")}}> 
+        <AboutUs onClick={() => {navigate("/about")}}> 
             <h2>
                 About Us
             </h2>
@@ -108,9 +108,8 @@ const Categories = styled.div`
     display: flex;
 `
 
-const AboutUs = styled.div`
+const AboutUs = styled.button`
     border: 3px solid black;
-    width: ;
     flex: 1;
     margin: 10px;
     align-items: center;
@@ -119,6 +118,11 @@ const AboutUs = styled.div`
     position: absolute;
     padding: 2px;
     cursor: pointer;
+    background-color: #F7DC6F;
+
+    &:hover {
+        background-color: #D7DBDD;
+    }
 `
 
 

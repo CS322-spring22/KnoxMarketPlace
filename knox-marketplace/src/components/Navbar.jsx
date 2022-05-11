@@ -86,6 +86,7 @@ export const Navbar = () => {
         <Container>
             <Wrapper>
                 <Left>
+                    <HomeButton onClick={() => {navigate("/")}}>Home</HomeButton>
                     <PostItem onClick={() => {navigate("/post")}}>Post Item</PostItem>
                 </Left>
                 <Center>
@@ -118,6 +119,11 @@ const HomeSignUp = styled.button`
     outline: none;
     padding: 6px 8px;
     text-align: center;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
  `;
 
  const PostItem = styled.button`
@@ -137,6 +143,35 @@ const HomeSignUp = styled.button`
     outline: none;
     padding: 6px 8px;
     text-align: center;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
+ `;
+
+ const HomeButton = styled.button`
+    right: 0px;
+    appearance: none;
+    background-color: #CACFD2;
+    border: 2px solid #CACFD2;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 40px;
+    outline: none;
+    padding: 6px 8px;
+    text-align: center;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
  `;
 
  const Cart = styled.button`
@@ -156,6 +191,11 @@ const HomeSignUp = styled.button`
     outline: none;
     padding: 6px 8px;
     text-align: center;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
  `;
 
 export default Navbar
