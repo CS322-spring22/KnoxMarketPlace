@@ -114,7 +114,7 @@ const Left = styled.div`
 `
 const Body1 = styled.div`
     padding: 10px 50px;
-    height: 1000px;
+    height: 1400px;
     width: 1000px;
     background-color: #FEF9E7;
     margin: auto;
@@ -129,8 +129,6 @@ const PostPage = () => {
     return (
         <div className="Post">
             <Navbar/>
-
-            <UploadImg/>
 
             <Container><Wrapper>
 

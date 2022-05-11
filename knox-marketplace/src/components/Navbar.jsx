@@ -99,8 +99,9 @@ export const Navbar = () => {
         <Container>
             <Wrapper>
             <Left>
-             <LogoButton className="logobutton" onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
-             <ItemPosting className="itembutton" onClick={() => {navigate("/post")}}>Post Item</ItemPosting>
+                <HomeButton onClick={() => {navigate("/")}}>Home</HomeButton>
+                <LogoButton className="logobutton" onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
+                <ItemPosting className="itembutton" onClick={() => {navigate("/post")}}>Post Item</ItemPosting>
             </Left> 
 
             {/* <Posting>
@@ -136,6 +137,11 @@ export const Navbar = () => {
     min-height: 40px;
     outline: none;
     text-align: center;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
  `;
 
  const LogoButton = styled.div`
@@ -165,6 +171,35 @@ const ItemPosting = styled.button`
     min-height: 40px;
     outline: none;
     text-align: center;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
+ `;
+
+ const HomeButton = styled.button`
+    right: 0px;
+    appearance: none;
+    background-color: #CACFD2;
+    border: 2px solid #CACFD2;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 40px;
+    outline: none;
+    padding: 6px 8px;
+    text-align: center;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
  `;
 
  const Cart = styled.button`
@@ -184,6 +219,11 @@ const ItemPosting = styled.button`
     outline: none;
     padding: 6px 8px;
     text-align: center;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
  `;
 
 export default Navbar
