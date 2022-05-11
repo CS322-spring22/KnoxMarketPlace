@@ -99,8 +99,8 @@ export const Navbar = () => {
         <Container>
             <Wrapper>
             <Left>
-                <HomeButton onClick={() => {navigate("/")}}>Home</HomeButton>
                 <LogoButton className="logobutton" onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
+                <HomeButton className="itembutton" onClick={() => {navigate("/")}}>Home</HomeButton>
                 <ItemPosting className="itembutton" onClick={() => {navigate("/post")}}>Post Item</ItemPosting>
             </Left> 
 
