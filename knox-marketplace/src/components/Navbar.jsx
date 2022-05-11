@@ -5,13 +5,14 @@ import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import {firebase} from '../firebase';
 
-
+  
 
 
 const Container = styled.div`
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 100;
+    width: 100%;
     height: 80px;
     background-color: #F7DC6F;
 `
@@ -24,7 +25,17 @@ const Wrapper = styled.div`
 
 const Left = styled.div`
     flex: 1;
+    display: flex;
+
+    .itembutton{
+        margin-left: 30px;
+        width: 100px;
+        height: 50px;
+    }
+
 `
+
+
 
 const Center = styled.div`
     flex: 1;
@@ -42,10 +53,12 @@ const Right = styled.div`
 
 export const Navbar = () => {
     const [user, setUser] = useState({});
+
    
     const SignInWithFirebase = e => {
         // e.preventDefault();
   
+
         var google_provider = new firebase.auth.GoogleAuthProvider();
         google_provider.setCustomParameters({
            hd: "knox.edu"
@@ -85,23 +98,29 @@ export const Navbar = () => {
     return (
         <Container>
             <Wrapper>
-                <Left>
-                    <PostItem onClick={() => {navigate("/post")}}>Post Item</PostItem>
-                </Left>
+            <Left>
+             <LogoButton className="logobutton" onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
+             <ItemPosting className="itembutton" onClick={() => {navigate("/post")}}>Post Item</ItemPosting>
+            </Left> 
+
+            {/* <Posting>
+            <PostItem onClick={() => {navigate("/post")}}>Post Item</PostItem>
+             </Posting> */}
+
                 <Center>
                     <OurName>Knox Marketplace</OurName>
                 </Center>
                 <Right>
 
                 <HomeSignUp>Hello, {user ? user.email : "Guest"} </HomeSignUp>
-                        <HomeSignUp onClick={userSignIn}>{user ? "Sign Out" : "Sign In"}</HomeSignUp>
+                        <HomeSignUp onClick={userSignIn}>{user ? "Sign Out" : "Knox Sign In"}</HomeSignUp>
                 </Right>
             </Wrapper>
         </Container>
     )
 }
 
-const HomeSignUp = styled.button`
+ const HomeSignUp = styled.button`
     right: 0px;
     appearance: none;
     background-color: #CACFD2;
@@ -116,12 +135,22 @@ const HomeSignUp = styled.button`
     line-height: normal;
     min-height: 40px;
     outline: none;
-    padding: 6px 8px;
     text-align: center;
  `;
 
- const PostItem = styled.button`
-    right: 0px;
+ const LogoButton = styled.div`
+   width: 180px;
+   margin: 10px;
+   cursor: pointer;
+   margin-left: 15px;
+
+   img {
+      width: 100%;
+   }
+`
+const ItemPosting = styled.button`
+
+    left: 0px;
     appearance: none;
     background-color: #CACFD2;
     border: 2px solid #CACFD2;
@@ -135,7 +164,6 @@ const HomeSignUp = styled.button`
     line-height: normal;
     min-height: 40px;
     outline: none;
-    padding: 6px 8px;
     text-align: center;
  `;
 
