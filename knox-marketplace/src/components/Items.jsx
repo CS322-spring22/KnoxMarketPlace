@@ -44,7 +44,7 @@ const Items = () => {
     <Container>
         {data.map(item => (
             <ItemSingle 
-                item = {item} 
+                item = {item.details} 
                 key = {item.id}
             />
         ))}
