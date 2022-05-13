@@ -5,6 +5,8 @@ import CategoryPage from "./pages/CategoryPage";
 import ItemPage from "./pages/ItemPage";
 import AboutPage from "./pages/AboutPage";
 import Post from "./pages/PostPage";
+import FavPage from "./pages/FavPage";
+
 
 const App = () => {
   
@@ -18,6 +20,7 @@ const App = () => {
           <Route path= "/Item" element={<ItemPage/>} />
           <Route path= "/AboutUs" element={<AboutPage/>} />
           <Route path= "/post" element={<Post/>} />
+          <Route path= "/favPage" element={<FavPage/>} />
         </Routes>
       </Container>
     </Router>

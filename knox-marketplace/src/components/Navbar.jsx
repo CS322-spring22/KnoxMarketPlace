@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import {firebase} from '../firebase';
+import {firebase, db} from '../firebase';
 
   
 
@@ -112,6 +112,7 @@ export const Navbar = () => {
                 </Center>
                 <Right>
 
+                <FavPageButton onClick={() => {navigate("/favPage")}}>Saved Items</FavPageButton>
                 <HomeSignUp>Hello, {user ? user.email : "Guest"} </HomeSignUp>
                         <HomeSignUp onClick={userSignIn}>{user ? "Sign Out" : "Knox Sign In"}</HomeSignUp>
                 </Right>
@@ -138,11 +139,54 @@ export const Navbar = () => {
     text-align: center;
  `;
 
+<<<<<<< Updated upstream
  const LogoButton = styled.div`
    width: 180px;
    margin: 10px;
    cursor: pointer;
    margin-left: 15px;
+=======
+ const FavPageButton = styled.button`
+    right: 0px;
+    appearance: none;
+    background-color: #CACFD2;
+    border: 2px solid #CACFD2;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 40px;
+    outline: none;
+    text-align: center;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
+ `;
+
+const PostItem = styled.button`
+
+    left: 0px;
+    appearance: none;
+    background-color: #CACFD2;
+    border: 2px solid #CACFD2;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 40px;
+    outline: none;
+    text-align: center;
+>>>>>>> Stashed changes
 
    img {
       width: 100%;

@@ -2,7 +2,13 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import Navbar from './Navbar';
+import { db } from '../firebase';
+import { doc, setDoc, addDoc, getDocs, collection, serverTimestamp } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
+
+
+
 
 const Info = styled.div`
     width: 100%;
@@ -75,11 +81,39 @@ const Icon = styled.div`
 
 const ItemSingle = ({item}) => {
 
-    const[cart, setCart] = useState([]);
+    // const[cart, setCart] = useState([]);
+    const [data, setData] = useState([]);
 
-    const addToCart = (product) => {
-        setCart([...cart, product]);
+
+    // const addToCart = (product) => {
+    //     setCart([...cart, product]);
+    // }
+
+    const handleAdd = async(e) => {
+        e.preventDefault();
+
+        try {
+            const auth = getAuth();
+            const user = auth.currentUser;
+            /*
+            await setDoc(doc(db, "users", user.uid), {
+                ...data,
+                timeStamp: serverTimestamp(),
+            });
+            */
+
+            const docRef = await addDoc(collection(db, "FavoriteItems"), {
+                uid: user.uid,
+                ...data,
+                timeStamp: serverTimestamp(),
+            });
+              
+        } catch (err) {
+            console.log(err);
+        }
     }
+
+    
     
   return (
     // <Container>
@@ -114,7 +148,7 @@ const ItemSingle = ({item}) => {
                     <SearchIcon/>
                 </Icon> 
                 <Icon>
-                    <FavoriteBorderOutlinedIcon onClick={() => addToCart(item)}/>
+                    <FavoriteBorderOutlinedIcon onClick = {handleAdd}/>
                 </Icon>
             </Info>
         </Container>
