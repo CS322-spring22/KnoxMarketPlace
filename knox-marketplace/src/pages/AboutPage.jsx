@@ -14,12 +14,21 @@ const Section = styled.div`
     text-align: center;
 `
 
-const Title = styled.h2`
-    margin-top: 20px;
+const Title = styled.text`
+    font-size: 25px;
+    font-weight: bolder;
+    margin-top: 25px;
+    border: 3px solid black;
+    align-items: center;
+    justify-content: center;
 `
 
 const Description = styled.p`
-    
+    font-size: 18px;
+    width: 650px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 `
 
 const Card = styled.div`
@@ -34,14 +43,24 @@ const AboutPage = () => {
             <Navbar/>
 
             <Section>
+                <br/>
+
                 <Title>Our Website</Title>
                 <Description>
-                    Description of our website
+                    Knox Marketplace is a Web App made by Knox students, for Knox students.<br/>
+                    Verified Users can post items they want to sell to other Users.<br/>
+                    Everyone can view the items, but only Knox students can post items on this website.
                 </Description>
 
                 <Title>How To Use</Title>
                 <Description>
-                    Basic instructions
+                    <h3>Seller</h3>
+                    Sign In using Google Login with your Knox email and credentials.<br/>
+                    You will then be able to post items for sell.<br/>
+                    <br/>
+                    <h3>General User / Buyer</h3>
+                    Click on an item of interest to view it and add it to your Favorited page.<br/>
+                    You can also contact the seller to set up a meeting place and payment method to buy the item using the contact information they provided in the item page.
                 </Description>
 
                 <Title>Meet Our Team!</Title>

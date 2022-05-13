@@ -40,7 +40,8 @@ const Title = styled.h1`
 `
 
 const Desc = styled.p`
-  margin 20px 0px;
+  margin 5px 0px;
+  font-size: 20px;
 `
 
 const Price = styled.span`
@@ -69,12 +70,8 @@ const Button = styled.button`
     background-color: #f8f4f4;
   }
 `
-const Body = styled.div`
-    padding: 10px 50px;
-    height: 700px;
-    width: 500px;
-    background-color: #FEF9E7;
-    margin: auto;
+const ContactInfo = styled.h2`
+    
 `
 
 const ItemPage = () => {
@@ -97,6 +94,9 @@ const ItemPage = () => {
                     <CartContainer>
                         <Button>ADD TO CART</Button>
                     </CartContainer>
+                    <Title>Seller Contact Information</Title>
+                    <ContactInfo>Email: abc@gmail.com</ContactInfo>
+                    <ContactInfo>Phone Number: xxx-xxx-xxxx</ContactInfo>
                 </InfoContainer>
 
                 <ChatContainer>

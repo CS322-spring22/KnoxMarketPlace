@@ -7,6 +7,7 @@ import WatchOutlinedIcon from '@mui/icons-material/WatchOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined';
 
 export const SidebarData = [
     {
@@ -18,6 +19,11 @@ export const SidebarData = [
         title: "Furniture",
         icon: <WeekendOutlinedIcon />,
         link: "/Furniture"
+    },
+    {
+        title: "Entertainment",
+        icon: <SportsEsportsOutlinedIcon />,
+        link: "/Entertainment"
     },
     {
         title: "Books",
@@ -45,8 +51,8 @@ export const SidebarData = [
         link: "/Artwork"
     },
     {
-        title: "Others",
+        title: "Other",
         icon: <AddCircleOutlinedIcon />,
-        link: "/Others"
+        link: "/Other"
     },
 ]

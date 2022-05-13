@@ -5,6 +5,8 @@ import CategoryPage from "./pages/CategoryPage";
 import ItemPage from "./pages/ItemPage";
 import AboutPage from "./pages/AboutPage";
 import Post from "./pages/PostPage";
+import FavPage from "./pages/FavPage";
+
 
 const App = () => {
   
@@ -13,11 +15,12 @@ const App = () => {
       <Container>
         <Routes>
           <Route path= "" element={<Home/>} />
-          <Route path= "/Home" element={<Home/>} />
-          <Route path= "/Category" element={<CategoryPage/>} />
-          <Route path= "/Item" element={<ItemPage/>} />
-          <Route path= "/AboutUs" element={<AboutPage/>} />
+          <Route path= "/home" element={<Home/>} />
+          <Route path= "/category" element={<CategoryPage/>} />
+          <Route path= "/item" element={<ItemPage/>} />
+          <Route path= "/about" element={<AboutPage/>} />
           <Route path= "/post" element={<Post/>} />
+          <Route path= "/FavPage" element={<FavPage/>} />
         </Routes>
       </Container>
     </Router>
