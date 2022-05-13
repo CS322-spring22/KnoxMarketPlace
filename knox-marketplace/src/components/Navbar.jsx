@@ -150,7 +150,10 @@ export const Navbar = () => {
     line-height: normal;
     min-height: 40px;
     outline: none;
+    padding: 6px 8px;
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 
     &:hover {
         background-color: #858585;
