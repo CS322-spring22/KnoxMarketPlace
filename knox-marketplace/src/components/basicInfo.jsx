@@ -1,113 +1,55 @@
-// import React from 'react'
-// import '../index.css';
-// import {SidebarData} from './SidebarData'
-// import styled from 'styled-components'
-// import { Link, useNavigate } from "react-router-dom";
-// import SearchIcon from '@mui/icons-material/Search';
-
-// const Container = styled.div`
-//     height: 80px;
-//     width: 100px
-//     background-color: #F7DC6F;
-// `
-// const Right = styled.div`
-//     flex: 1;
-//     text-align: right;
-// `
-// const Left = styled.div`
-//     flex: 1;
-// `
-// const Wrapper = styled.div`
-//     padding: 20px 20px;
-//     display: flex;
-//     justify-content: space-between;
-// `
-// const Styles = styled.div`
-//  background: lavender;
-//  padding: 20px;
-//     form {
-//         background: white;
-//         border: 1px solid #dedede;
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: space-around;
-//         margin: 0 auto;
-//         max-width: 500px;
-//         padding: 30px 50px;
-//     }`;
-// export const basicInfo = () => {
-
-//     return(
-//         <div className='basicInfo'>
-//             <Container>
-//         <form>
-//             <fieldset>
-//                 <label>
-//                     <h2>Title</h2>
-//                     <input name="title" />
-//                 </label>
-//             </fieldset>
-//         {/* <button type="submit">Submit</button> */}
-//         </form>
-//         <form>
-//             <fieldset>
-//                 <label>
-//                     <h2>Category</h2>
-//                     <input name="Category" />
-//                 </label>
-//             </fieldset>
-//         {/* <button type="submit">Submit</button> */}
-//         </form>
-//         <form>
-//             <fieldset>
-//                 <label>
-//                     <h2>Cost</h2>
-//                     <input name="Cost" />
-//                 </label>
-//             </fieldset>
-//         {/* <button type="submit">Submit</button> */}
-//         </form>
-//                 {/* <h2>tittle</h2>
-//                 <h2>category</h2>
-//                 <h2>cost</h2> */}
-//             </Container>
-//         </div>
-//     )
-// }
-
-// export default basicInfo
-import React, {useState} from 'react';
-// import {useHistory} from "react-router"
+import React, {useEffect, useState} from 'react';
 import '../App.css';
 import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from '../firebase';
+import { db, storage } from '../firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
+import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 
 export default function Form(){
-
-    const [form, setForm] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        shippingAddress: "",
-        projectAddress: "",
-
-        customDesign: "",
-        description: "",
-        dimensionDetail: "",
-        manufactureDetail: "",
-
-        designText: "",
-        deadline: "",
-        budget: "",
-        comment: ""
-    })
-
-    const [count, setCount] = useState(1)
-
+    const [file, setFile] = useState("");
     const [data, setData] = useState({});
+    const [per, setPerc] = useState(null);
+
+    useEffect(() => {
+        const uploadFile = () => {
+          const name = new Date().getTime() + file.name;
+    
+          console.log(name);
+          const storageRef = ref(storage, name);
+          const uploadTask = uploadBytesResumable(storageRef, file);
+    
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              const progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log("Upload is " + progress + "% done");
+              setPerc(progress);
+              switch (snapshot.state) {
+                case "paused":
+                  console.log("Upload is paused");
+                  break;
+                case "running":
+                  console.log("Upload is running");
+                  break;
+                default:
+                  break;
+              }
+            },
+            (error) => {
+              console.log(error);
+            },
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                setData((prev) => ({ ...prev, image: downloadURL }));
+              });
+            }
+          );
+        };
+        file && uploadFile();
+      }, [file]);
 
     const updateForm = (e) => {
         /*
@@ -120,7 +62,11 @@ export default function Form(){
         // console.log(form)
 
         const id = e.target.id;
-        const value = e.target.value;
+        var value = e.target.value;
+
+        if(isNaN(e.target.value) == false){
+            value = parseFloat(value).toFixed(2);
+        }
 
         setData({...data, [id]: value});
     }
@@ -139,12 +85,9 @@ export default function Form(){
             */
 
             const docRef = await addDoc(collection(db, "items"), {
-                details: 
-                {
-                    uid: user.uid,
-                    ...data,
-                    timeStamp: serverTimestamp(),
-                }
+                uid: user.uid,
+                ...data,
+                timeStamp: serverTimestamp(),
             });
               
         } catch (err) {
@@ -153,45 +96,6 @@ export default function Form(){
 
         navigate("/");
     }
-
-
-    //onSubmit redirect to a new page
-    //use history.push. import from react-router-dom
-    // const history = useHistory();
-
-
-    //"send" method using fetch
-    // const sendEmail = (e) => {
-
-    //     e.preventDefault();
-
-    //     const data = {
-    //         service_id: 'service_z3p8h0m',
-    //         template_id: 'template_svmf3nm',
-    //         user_id: 'user_7Pf1rN0FgZQwrrMpFSw55',
-    //         template_params: form
-    //     };
-
-    
-    //     fetch('https://api.emailjs.com/api/v1.0/email/send', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'application/json',
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-
-    //     .then((result) => {
-    //         console.log(result.statusText);
-    //     }, (error) => {
-    //         console.log(error.statusText);
-    //     });
-        
-    //     e.target.reset();
-
-    //     history.push("/portfolio")     //onSubmit redirect to a new page
-    // }
 
     let navigate = useNavigate();
 
@@ -206,68 +110,127 @@ export default function Form(){
                 
                 <div className = "field1">
                 {/* <label> customer info </label> */}
-                <h1>YOUR ITEM</h1>
-                <h3>Title:</h3>
+
+                <h2>YOUR ITEM INFORMATION</h2>
+
+                <h2>Title: *</h2>
                 <input 
-                    // type ="text" 
+                    type ="text" 
+                    required
                     id = "title"
                     className = "form-input"
                     name ="title" 
-                    placeholder="📛"
+                    placeholder="Title"
                     onChange ={updateForm} 
-                    // value = {form.name}
                 />
-                <h3>Price:</h3>
+
+                <h2>Price: *</h2>
                 <input 
-                    // type ="tel" 
+                    type ="number" 
+                    required
                     id = "price"
                     className = "form-input"
                     name ="price" 
-                    placeholder="💸"
+                    placeholder="Price"
                     onChange ={updateForm} 
-                    // value = {form.phone}
+                    min = "0"
+                    max = "5000000"
+                    step = ".01"
                 />
-                <h3>Category:</h3>
-                <input 
-                    // type ="email" 
+
+                <h2>Category: *</h2>
+                <select 
+                    type ="option" 
+                    required
                     id = "category"
                     className = "form-input"
-                    name ="Category" 
-                    placeholder="🔠"
+                    name ="category" 
                     onChange ={updateForm} 
-                    // value = {form.email}
+                >
+                    <option>
+                        
+                    </option>
+                    <option value = "Electronics">Electronics</option>
+                    <option value = "Furniture">Furniture</option>
+                    <option value = "Entertainment">Entertainment</option>
+                    <option value = "Books">Books</option>
+                    <option value = "Clothing">Clothing</option>
+                    <option value = "Accessories">Accessories</option>
+                    <option value = "Food">Food</option>
+                    <option value = "Artwork">Artwork</option>
+                    <option value = "Other">Other</option>
+                </select>
+
+                <div>
+                <h2>Image: *</h2>
+                <img
+                    height="120px"
+                    src={
+                        file
+                        ? URL.createObjectURL(file)
+                        : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                    }
+                    alt=""
                 />
-                <h3>Image:</h3>
-                <input 
-                    // type ="email" 
-                    id = "image"
+                <label htmlFor="file">
+                    <DriveFolderUploadOutlinedIcon className="icon" cursor="pointer"/>
+                </label>
+                <input
+                    type="file"
+                    required
+                    id="file"
                     className = "form-input"
-                    name ="image" 
-                    placeholder="Image"
-                    onChange ={updateForm} 
-                    // value = {form.email}
+                    name ="image"
+                    onChange={(e) => setFile(e.target.files[0])}
+                    style={{ display: "none" }}
                 />
-                <h3>Description:</h3>
+                </div>
+
+                <h2>Description: *</h2>
                 <textarea 
-                    // type ="text" 
+                    type ="text" 
+                    required
                     id = "description"
                     className = "form-input"
-                    name ="Description" 
-                    placeholder="💭"
+                    name ="description" 
+                    placeholder="Description"
                     onChange ={updateForm} 
-                    // value = {form.projectAddress}
+                />
+
+                <h2>YOUR CONTACT INFORMATION (For Your Buyers)</h2>
+
+                <h2>Preferred Email: *</h2>
+                <input 
+                    type ="email" 
+                    required
+                    id = "email"
+                    className = "form-input"
+                    name ="email" 
+                    placeholder="Email"
+                    onChange ={updateForm} 
+                />
+
+                <h2>Preferred Phone Number (xxx-xxx-xxxx): *</h2>
+                <input 
+                    type ="tel" 
+                    required
+                    id = "phone"
+                    className = "form-input"
+                    name ="phone" 
+                    placeholder="Phone Number"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    onChange ={updateForm} 
                 />
                 
                 <button 
-                type = "submit"
-                id= "submitBtn"
-                className = "submitBtn"
+                    disabled={per !== null && per < 100}
+                    type = "submit"
+                    id= "submitBtn"
+                    className = "submitBtn"
                 > submit</button>
+
                 </div>
                  
-
-                
-
             </form>
             {/* end of form */}
 

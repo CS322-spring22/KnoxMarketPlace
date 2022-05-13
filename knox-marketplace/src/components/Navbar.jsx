@@ -9,12 +9,13 @@ import {firebase, db} from '../firebase';
 
 
 const Container = styled.div`
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 100;
-    width: 100%;
     height: 80px;
     background-color: #F7DC6F;
+    width: 100%;
+    align-items: center;
 `
 
 const Wrapper = styled.div`
@@ -25,17 +26,8 @@ const Wrapper = styled.div`
 
 const Left = styled.div`
     flex: 1;
-    display: flex;
-
-    .itembutton{
-        margin-left: 30px;
-        width: 100px;
-        height: 50px;
-    }
 
 `
-
-
 
 const Center = styled.div`
     flex: 1;
@@ -99,13 +91,9 @@ export const Navbar = () => {
         <Container>
             <Wrapper>
             <Left>
-             <LogoButton className="logobutton" onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
-             <ItemPosting className="itembutton" onClick={() => {navigate("/post")}}>Post Item</ItemPosting>
+                <HomeButton onClick={() => {navigate("/")}}>Home</HomeButton>
+                <PostItem onClick={() => {navigate("/post")}}>Post Item</PostItem>
             </Left> 
-
-            {/* <Posting>
-            <PostItem onClick={() => {navigate("/post")}}>Post Item</PostItem>
-             </Posting> */}
 
                 <Center>
                     <OurName>Knox Marketplace</OurName>
@@ -136,16 +124,17 @@ export const Navbar = () => {
     line-height: normal;
     min-height: 40px;
     outline: none;
+    padding: 6px 8px;
     text-align: center;
- `;
+    margin-left: 10px;
+    margin-right: 10px;
 
-<<<<<<< Updated upstream
- const LogoButton = styled.div`
-   width: 180px;
-   margin: 10px;
-   cursor: pointer;
-   margin-left: 15px;
-=======
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
+ `;
+ 
  const FavPageButton = styled.button`
     right: 0px;
     appearance: none;
@@ -170,7 +159,6 @@ export const Navbar = () => {
  `;
 
 const PostItem = styled.button`
-
     left: 0px;
     appearance: none;
     background-color: #CACFD2;
@@ -185,16 +173,19 @@ const PostItem = styled.button`
     line-height: normal;
     min-height: 40px;
     outline: none;
+    padding: 6px 8px;
     text-align: center;
->>>>>>> Stashed changes
+    margin-left: 10px;
+    margin-right: 10px;
 
-   img {
-      width: 100%;
-   }
-`
-const ItemPosting = styled.button`
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
+ `;
 
-    left: 0px;
+ const HomeButton = styled.button`
+    right: 0px;
     appearance: none;
     background-color: #CACFD2;
     border: 2px solid #CACFD2;
@@ -208,7 +199,15 @@ const ItemPosting = styled.button`
     line-height: normal;
     min-height: 40px;
     outline: none;
+    padding: 6px 8px;
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
  `;
 
  const Cart = styled.button`
@@ -228,6 +227,13 @@ const ItemPosting = styled.button`
     outline: none;
     padding: 6px 8px;
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    &:hover {
+        background-color: #858585;
+        transition: all 0.5s ease;
+    }
  `;
 
 export default Navbar
