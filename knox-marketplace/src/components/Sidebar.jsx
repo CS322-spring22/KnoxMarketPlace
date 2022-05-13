@@ -8,10 +8,10 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const SidebarEdit = styled.div`
   position: sticky;
-  top: 0;
+  top: 80px;
   z-index: 100;
   margin: 0;
-  height: 100%;
+  height: calc(100vh - 80px);
   width: 250px;
   background-color: #F7DC6F;
 `
@@ -21,7 +21,7 @@ export const Sidebar = () => {
 
   return (
     <SidebarEdit>
-         <Container>
+        <Container>
             <LogoButton onClick={() => {navigate("/")}}><img src="./logotest.jpg" alt="" /></LogoButton>
         </Container>
 
@@ -52,14 +52,6 @@ export const Sidebar = () => {
             </ul>
         </Container>
 
-        {/* <AboutUs>
-            <Link to="/about">
-                <h2>
-                    About Us
-                </h2>
-            </Link>
-                
-        </AboutUs> */}
         <AboutUs onClick={() => {navigate("/about")}}> 
             <h2>
                 About Us
@@ -70,7 +62,7 @@ export const Sidebar = () => {
 }
 
 const LogoButton = styled.div`
-   width: 180px;
+   width: 100px;
    margin: 20px;
    cursor: pointer;
    img {
@@ -109,11 +101,10 @@ const AboutUs = styled.button`
     border: 3px solid black;
     flex: 1;
     margin: 10px;
+    margin-top: 20px;
     align-items: center;
     justify-content: center;
-    bottom: 0;
-    position: absolute;
-    padding: 2px;
+    padding: 4px;
     cursor: pointer;
     background-color: #F7DC6F;
 

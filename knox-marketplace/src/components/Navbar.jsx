@@ -14,6 +14,8 @@ const Container = styled.div`
     z-index: 100;
     height: 80px;
     background-color: #F7DC6F;
+    width: 100%;
+    align-items: center;
 `
 
 const Wrapper = styled.div`
@@ -26,8 +28,6 @@ const Left = styled.div`
     flex: 1;
 
 `
-
-
 
 const Center = styled.div`
     flex: 1;
@@ -123,7 +123,10 @@ export const Navbar = () => {
     line-height: normal;
     min-height: 40px;
     outline: none;
+    padding: 6px 8px;
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 
     &:hover {
         background-color: #858585;
@@ -132,7 +135,6 @@ export const Navbar = () => {
  `;
 
 const PostItem = styled.button`
-
     left: 0px;
     appearance: none;
     background-color: #CACFD2;
@@ -147,7 +149,10 @@ const PostItem = styled.button`
     line-height: normal;
     min-height: 40px;
     outline: none;
+    padding: 6px 8px;
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 
     &:hover {
         background-color: #858585;
@@ -172,6 +177,8 @@ const PostItem = styled.button`
     outline: none;
     padding: 6px 8px;
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 
     &:hover {
         background-color: #858585;
@@ -196,6 +203,8 @@ const PostItem = styled.button`
     outline: none;
     padding: 6px 8px;
     text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
 
     &:hover {
         background-color: #858585;

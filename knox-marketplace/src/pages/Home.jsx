@@ -9,13 +9,14 @@ import styled from 'styled-components'
 import ItemPage from "./ItemPage";
 
 const Container = styled.div`
-    flex: 1;
+    display: flex;
+    width: 100%;
 `
 
 
 const Home = () => {
 
-    
+    /*
     return (
         <div className="main">
                 <Sidebar/>
@@ -25,6 +26,18 @@ const Home = () => {
                     <Items/>
                 </Container>
         </div>
+    )
+    */
+
+    return (
+        <>
+                <Navbar/>
+
+                <Container>
+                    <Sidebar/>
+                    <Items/>
+                </Container>
+        </>
     )
 
 };
