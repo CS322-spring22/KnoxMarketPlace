@@ -114,7 +114,16 @@ const ItemSingle = ({item}) => {
             console.log(err);
         }
     }
-
+    function detail(){
+        alert(
+            "Title: " + item.title +
+            "\nDescription: "+ item.description +
+            "\nPrice: " + item.price +
+            "\nEmail: " + item.email +
+            "\nPhone: " + item.phone 
+            );
+        
+    }
     
     
   return (
@@ -147,7 +156,7 @@ const ItemSingle = ({item}) => {
             
             <Info>
                 <Icon>
-                    <SearchIcon/>
+                    <SearchIcon onClick = {detail}/>
                 </Icon> 
                 <Icon>
                     <FavoriteBorderOutlinedIcon onClick = {handleAdd}/>
