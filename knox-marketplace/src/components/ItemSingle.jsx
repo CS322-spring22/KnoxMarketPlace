@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import { db } from '../firebase';
-import { doc, setDoc, addDoc, getDocs, collection, serverTimestamp, deleteDoc} from "firebase/firestore";
+import { doc, setDoc, addDoc, getDocs, collection, serverTimestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 
@@ -89,7 +89,6 @@ const ItemSingle = ({item}) => {
     //     setCart([...cart, product]);
     // }
 
-
     const handleAdd = async(e) => {
         e.preventDefault();
 
@@ -105,7 +104,7 @@ const ItemSingle = ({item}) => {
 
             const docRef = await addDoc(collection(db, "FavoriteItems"), {
                 uid: user.uid,
-                ...item,
+                ...data,
                 timeStamp: serverTimestamp(),
             });
               
@@ -151,7 +150,6 @@ const ItemSingle = ({item}) => {
                 <Icon>
                     <FavoriteBorderOutlinedIcon onClick = {handleAdd}/>
                 </Icon>
-
             </Info>
         </Container>
 
