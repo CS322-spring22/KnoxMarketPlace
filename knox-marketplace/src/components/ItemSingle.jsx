@@ -88,7 +88,29 @@ const ItemSingle = ({item}) => {
     // const addToCart = (product) => {
     //     setCart([...cart, product]);
     // }
+    // const detail = async(e) => {
+    //     e.preventDefault();
 
+    //     try {
+    //         const auth = getAuth();
+    //         const user = auth.currentUser;
+    //         /*
+    //         await setDoc(doc(db, "users", user.uid), {
+    //             ...data,
+    //             timeStamp: serverTimestamp(),
+    //         });
+    //         */
+
+    //         const docRef = await addDoc(collection(db, "FavoriteItems"), {
+    //             uid: user.uid,
+    //             ...data,
+    //             timeStamp: serverTimestamp(),
+    //         });
+              
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
     const handleAdd = async(e) => {
         e.preventDefault();
 
@@ -114,7 +136,16 @@ const ItemSingle = ({item}) => {
     }
 
     
-    
+    function detail(){
+        alert(
+            "Title: " + item.title +
+            "\nDescription: "+ item.description +
+            "\nPrice: " + item.price +
+            "\nEmail: " + item.email +
+            "\nPhone: " + item.phone 
+            );
+        
+    }
   return (
     // <Container>
     //     <Image src = {item.img}/>
@@ -145,7 +176,7 @@ const ItemSingle = ({item}) => {
             
             <Info>
                 <Icon>
-                    <SearchIcon/>
+                    <SearchIcon onClick = {detail}/>
                 </Icon> 
                 <Icon>
                     <FavoriteBorderOutlinedIcon onClick = {handleAdd}/>
