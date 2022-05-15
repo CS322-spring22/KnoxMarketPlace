@@ -1,11 +1,11 @@
 
-
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SearchIcon from '@mui/icons-material/Search';
+import ClearIcon from '@mui/icons-material/Clear';
 import { db } from '../firebase';
-import { doc, setDoc, addDoc, getDocs, collection, serverTimestamp, deleteDoc} from "firebase/firestore";
+import { doc, setDoc, addDoc, getDocs, collection, serverTimestamp, deleteDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 
@@ -81,40 +81,20 @@ const Icon = styled.div`
     }
 `
 
-const ItemSingle = ({item}) => {
+const FavItemsSingle = ({item}) => {
 
-    // const[cart, setCart] = useState([]);
     const [data, setData] = useState([]);
 
 
-    // const addToCart = (product) => {
-    //     setCart([...cart, product]);
-    // }
-
-
-    const handleAdd = async(e) => {
-        e.preventDefault();
-
-        try {
-            const auth = getAuth();
-            const user = auth.currentUser;
-            /*
-            await setDoc(doc(db, "users", user.uid), {
-                ...data,
-                timeStamp: serverTimestamp(),
-            });
-            */
-
-            const docRef = await addDoc(collection(db, "FavoriteItems"), {
-                uid: user.uid,
-                ...item,
-                timeStamp: serverTimestamp(),
-            });
-              
-        } catch (err) {
-            console.log(err);
+    const handleDelete = async () => {
+        
+        try{
+            await db.collection('FavoriteItems').doc(item.id).delete();
+            console.log("delete Success");
+        } catch {
+            console.log("error");
         }
-    }
+    };
 
     
     
@@ -151,9 +131,8 @@ const ItemSingle = ({item}) => {
                     <SearchIcon/>
                 </Icon> 
                 <Icon>
-                    <FavoriteBorderOutlinedIcon onClick = {handleAdd}/>
+                    <ClearIcon onClick = {handleDelete}/>
                 </Icon>
-
             </Info>
         </Container>
 
@@ -167,4 +146,4 @@ const ItemSingle = ({item}) => {
   )
 }
 
-export default  ItemSingle;
+export default  FavItemsSingle;
