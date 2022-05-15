@@ -4,6 +4,8 @@ import ItemSingle from './ItemSingle'
 import { collection, getDocs } from "firebase/firestore";
 import { useState } from 'react';
 import { db } from '../firebase';
+import FavItemsSingle from './FavItemsSingle'
+
 
 const Container = styled.div`
     padding: 20px;
@@ -42,7 +44,7 @@ const FavItems = () => {
     
     <Container>
         {data.map(item => (
-            <ItemSingle 
+            <FavItemsSingle 
                 item = {item} 
                 key = {item.id}
             />
