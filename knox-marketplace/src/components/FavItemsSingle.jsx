@@ -1,14 +1,10 @@
 
-
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import { db } from '../firebase';
-import { doc, setDoc, addDoc, getDocs, collection, serverTimestamp, deleteDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-
+import { doc, deleteDoc } from "firebase/firestore";
 
 
 
@@ -86,53 +82,36 @@ const FavItemsSingle = ({item}) => {
 
     const [data, setData] = useState([]);
 
+    
 
-    const handleDelete = async () => {
-        
-        try{
-            await db.collection('FavoriteItems').doc(item.id).delete();
-            console.log("delete Success");
-        } catch {
-            console.log("error");
-        }
-    };
+    const deleteItem = async (id) => {
+        const itemDoc = doc(db, "FavoriteItems", id);
+        await deleteDoc(itemDoc);
+        console.log("delete success");
+      };
 
     
     
+ 
   return (
-    // <Container>
-    //     <Image src = {item.img}/>
-        
-    //     <Info>
-    //         <Icon>
-    //             <SearchIcon/>
-    //         </Icon> 
-    //         <Icon>
-    //             <FavoriteBorderOutlinedIcon/>
-    //         </Icon>
-    //     </Info>
-        
-    //     <Container>
-    //         <h4>{item.title}</h4>
-    //         <h1>{item.cost}</h1>
-    //     </Container>
-    // </Container>
-    
-    
-    // <Container>
-    //     <h3>{item.title}</h3>
-    //     <h1>{item.cost}</h1>
-    // </Container>
     <Card> 
         <Container>
+        {data.map((item) => (
+            <FavItemsSingle key = {item.id}
+                item = {item}   
+            />
+        ))}
             <Image src = {item.image}/>
-            
             <Info>
                 <Icon>
                     <SearchIcon/>
                 </Icon> 
                 <Icon>
-                    <ClearIcon onClick = {handleDelete}/>
+               
+                    <ClearIcon onClick = {() => {
+                        deleteItem(item.id) 
+                    }}/>
+               
                 </Icon>
             </Info>
         </Container>
@@ -147,4 +126,4 @@ const FavItemsSingle = ({item}) => {
   )
 }
 
-export default  FavItemsSingle;
+export default FavItemsSingle;

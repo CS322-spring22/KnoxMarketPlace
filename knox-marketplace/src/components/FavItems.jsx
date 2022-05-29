@@ -2,7 +2,6 @@
 
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import ItemSingle from './ItemSingle'
 import { collection, getDocs } from "firebase/firestore";
 import { useState } from 'react';
 import { db } from '../firebase';
@@ -19,13 +18,14 @@ const Container = styled.div`
 const FavItems = () => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
+  useEffect(
+      () => {
     const fetchData = async () => {
       let list = [];
       try {
           const querySnapshot = await getDocs(collection(db, "FavoriteItems"));
           querySnapshot.forEach((doc) => {
-              list.push(doc.data());
+              list.push({id: doc.id, ...doc.data()});
           });
           setData(list);
         } catch (err) {

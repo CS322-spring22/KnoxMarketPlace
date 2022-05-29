@@ -9,6 +9,7 @@ import FavPage from "./pages/FavPage";
 
 
 const App = () => {
+
   
   return(
     <Router>
