@@ -90,6 +90,7 @@ const FavItemsSingle = ({item}) => {
         const itemDoc = doc(db, "FavoriteItems", id);
         await deleteDoc(itemDoc);
         console.log("delete success");
+        window.location.reload(false);
       };
 
     function detail(){
