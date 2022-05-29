@@ -1,5 +1,3 @@
-
-
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { collection, getDocs } from "firebase/firestore";
@@ -12,7 +10,6 @@ const Container = styled.div`
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 `
 
 const FavItems = () => {

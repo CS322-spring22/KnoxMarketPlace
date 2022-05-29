@@ -48,10 +48,12 @@ const Card = styled.div`
     margin: 5px;
     height: 400px;
     align-items: center;
+    max-width: 300px;
 `
 
 const Image = styled.img`
     height: 75%;
+    max-width: 280px;
 `
 
 const ItemDetails = styled.div`
@@ -114,11 +116,12 @@ const ItemSingle = ({item}) => {
             console.log(err);
         }
     }
+    
     function detail(){
         alert(
             "Title: " + item.title +
             "\nDescription: "+ item.description +
-            "\nPrice: " + item.price +
+            "\nPrice: $" + item.price +
             "\nEmail: " + item.email +
             "\nPhone: " + item.phone 
             );
