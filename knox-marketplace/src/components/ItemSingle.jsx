@@ -109,7 +109,7 @@ const ItemSingle = ({item}) => {
                 ...item,
                 timeStamp: serverTimestamp(),
             });
-              
+            console.log("nice");
         } catch (err) {
             console.log(err);
         }

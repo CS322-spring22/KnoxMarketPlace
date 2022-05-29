@@ -7,6 +7,7 @@ import Items from '../components/Items';
 import ItemSingle from '../components/ItemSingle';
 import FavItems from "../components/FavItems";
 
+
 const Container = styled.div`
     position: sticky;
     top: 0;
